@@ -1,9 +1,13 @@
-const images = [
+ const images = [
       "images/slide.jpg",
       "images/slide-2.jpg",
       "images/slide-3.jpg",
       "images/slide-4.jpg",
-      "images/slide-5.jpg"
+      "images/slide-5.jpg",
+      "images/slide-7.jpg",
+      "images/slide-8.jpg",
+      "images/slide-9.jpg",
+      "images/slide-10.jpg"
     ];
 
     let currentIndex = 0;
