@@ -48,9 +48,29 @@
         });
 
         if (index === currentIndex && autoplay) {
-          const ring = document.createElement("div");
-          ring.className = "progress-ring";
-          thumbDiv.appendChild(ring);
+          const intervalTime = 4900;
+          const ringWrapper = document.createElement("div");
+          ringWrapper.className = "progress-ring-wrapper";
+
+          ringWrapper.innerHTML = `
+            <svg class="progress-ring-svg" viewBox="0 0 120 84" preserveAspectRatio="none">
+              <rect x="2" y="2" width="116" height="80" rx="8" ry="8"
+                class="progress-ring-path" />
+            </svg>
+          `;
+
+          thumbDiv.appendChild(ringWrapper);
+
+          // Animate progress bar correctly
+          setTimeout(() => {
+            const ring = ringWrapper.querySelector('.progress-ring-path');
+            ring.style.strokeDashoffset = "375"; // reset
+            ring.style.transition = `stroke-dashoffset ${intervalTime}ms linear`;
+            requestAnimationFrame(() => {
+              ring.style.strokeDashoffset = "0";
+            });
+          }, 50);
+
         }
 
         thumbDiv.appendChild(img);
